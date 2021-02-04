@@ -1,21 +1,13 @@
-// import 'ol/ol.css';
-// import Map from 'ol/Map';
-// import View from 'ol/View';
-// import {Circle as Circlestyle, Fill, Stroke, Style} from 'ol/style';
-// import {Draw, Modify, Snap} from 'ol/interaction';
-// import {OSM, Vector as VectorSource} from 'ol/source';
-// import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer'
-
-
-
 var raster = new ol.layer.Tile({
     source: new ol.source.OSM(),
     visible: true
 })
+
     const map = new ol.Map({
         layers: [raster],
         target: 'mapdiv',
          view: new ol.View({
+            projection: 'EPSG:3857',
              center: [-8495906.908036437,-1165289.7741472162],
              zoom: 7,
              maxZoom: 10,
@@ -43,6 +35,19 @@ var raster = new ol.layer.Tile({
         })
     })
 featureOverlay.setMap(map);
+
+var modify = new ol.interaction.Modify({
+    features: features,
+    // the SHIFT key must be pressed to delete vertices, so
+    // that new vertices can be drawn at the same position
+    // of existing vertices
+    deleteCondition: function(event) {
+      return ol.events.condition.shiftKeyOnly(event) &&
+          ol.events.condition.singleClick(event);
+    }
+  });
+  map.addInteraction(modify);
+  
   var typeselect= document.getElementById('geometry');
    var draw;
    function addInteraction(){
@@ -74,8 +79,15 @@ featureOverlay.setMap(map);
       addInteraction();
 
 
-
+var coordinate= document.getElementById('footer');
 map.on('click', function(e){
-    var str;
+    console.log(e.coordinate);
+//     var str= e.coordinate;
+//     coordinate.innerHTML(str);
 })
-   
+// map.on('click', function(evt){
+//     var lonlat = new ol.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+//     var lon = lonlat[0];
+//     var lat = lonlat[1];
+//     alert("You clicked near lat lon: "+ lon.toFixed(6) + "  " + lat.toFixed(6));
+//   }); 
