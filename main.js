@@ -1,3 +1,7 @@
+function changeGeom(element){
+    var geomtype= element.text
+    document.getElementById('dropdownMenuButton').innerText= geomtype
+}
 var raster = new ol.layer.Tile({
     source: new ol.source.OSM(),
     visible: true
@@ -48,7 +52,7 @@ var modify = new ol.interaction.Modify({
   });
   map.addInteraction(modify);
   
-  var typeselect= document.getElementById('geometry');
+  var typeselect= document.getElementById('dropdownMenuButton');
    var draw;
    function addInteraction(){
        draw= new ol.interaction.Draw({
@@ -71,7 +75,7 @@ var modify = new ol.interaction.Modify({
     //    }
     //    }
     }
-    typeselect.onchange = function(e) {
+    typeselect.onChange = function(e) {
         map.removeInteraction(draw);
         addInteraction();
       };
@@ -79,12 +83,12 @@ var modify = new ol.interaction.Modify({
       addInteraction();
 
 
-var coordinate= document.getElementById('footer');
-map.on('click', function(e){
-    console.log(e.coordinate);
+// var coordinate= document.getElementById('footer');
+// map.on('click', function(e){
+//     console.log(e.coordinate);
 //     var str= e.coordinate;
 //     coordinate.innerHTML(str);
-})
+// })
 // map.on('click', function(evt){
 //     var lonlat = new ol.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
 //     var lon = lonlat[0];
