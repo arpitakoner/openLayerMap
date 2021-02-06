@@ -58,23 +58,21 @@
           <li class="nav-item">
             <div class="dropdown nav-link">
                 <label for="floatingInputValue">Select the Geometry Type</label>
-                <button class="btn btn-secondary dropdown-toggle mt-3" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  Point
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" onclick="changeGeom(this)">Point</a></li>
-                  <li><a class="dropdown-item" onclick="changeGeom(this)">LineString</a></li>
-                  <li><a class="dropdown-item" onclick="changeGeom(this)">Polygon</a></li>
-                  <li><a class="dropdown-item" onclick="changeGeom(this)">Circle</a></li>
-                  <li><a class="dropdown-item" onclick="changeGeom(this)">Square</a></li>
-                  <li><a class="dropdown-item" onclick="changeGeom(this)">Star</a></li>
-                  <li><a class="dropdown-item" onclick="changeGeom(this)">Box</a></li>
-                </ul>
+                
+                <select class="btn btn-secondary dropdown-toggle mt-3" id="geometry">
+                  <option value="Point">Point</option>
+                  <option value="LineString">LineStirng</option>
+                  <option value="Polygon">Polygon</option>
+                  <option value="Circle">Circle</option>
+                  <option value="Square">Square</option>
+                  <option value="Star">Star</option>
+                  <option value="Box">Box</option>
+              </select>
               </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" >
-                <button type="button" class="btn btn-secondary">undo</button>
+                <button type="button" class="btn btn-secondary" id='undo'>undo</button>
                 
             </a>
           </li>
