@@ -26,8 +26,8 @@ var map = new ol.Map({
     layers: [raster, vector],
     target: 'mapdiv',
     view: new ol.View({
-      center: [-11000000, 4600000],
-      zoom: 4,
+      center:[8207110.248920325, 2098638.864573062],
+      zoom: 5,
     }),
   });
 
@@ -99,3 +99,7 @@ document.getElementById('undo').addEventListener('click', function () {
 });
 
 addInteraction();
+
+map.on('click', function(e){
+  console.log(e.coordinate)
+});
