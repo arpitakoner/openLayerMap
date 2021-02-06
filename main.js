@@ -17,26 +17,26 @@ var raster = new ol.layer.Tile({
          
     });
 
-    var features = new ol.Collection();
-    var featureOverlay = new ol.layer.Vector({
-  source: new ol.source.Vector({features: features}),
-  style: new ol.style.Style({
-    fill: new ol.style.Fill({
-      color: 'rgba(255, 255, 255, 0.2)'
-    }),
-    stroke: new ol.style.Stroke({
-      color: '#ffcc33',
-      width: 2
-    }),
-    image: new ol.style.Circle({
-      radius: 7,
-      fill: new ol.style.Fill({
-        color: '#ffcc33'
-      })
-    })
-  })
-});
-featureOverlay.setMap(map);
+//     var features = new ol.Collection();
+//     var featureOverlay = new ol.layer.Vector({
+//   source: new ol.source.Vector({features: features}),
+//   style: new ol.style.Style({
+//     fill: new ol.style.Fill({
+//       color: 'rgba(255, 255, 255, 0.2)'
+//     }),
+//     stroke: new ol.style.Stroke({
+//       color: '#ffcc33',
+//       width: 2
+//     }),
+//     image: new ol.style.Circle({
+//       radius: 7,
+//       fill: new ol.style.Fill({
+//         color: '#ffcc33'
+//       })
+//     })
+//   })
+// });
+// featureOverlay.setMap(map);
 
 var modify = new ol.interaction.Modify({
   features: features,
@@ -68,7 +68,7 @@ if (value== 'Point') {
     value= 'Circle'
 } else if (value === 'Square') {
     value = 'Circle';
-    geometryFunction = new ol.interaction.Draw.createRegularPolygon(4);
+    geometryFunction = new ol.interaction.Draw.createRegularPolygon(type= 'circle');
   } else if (value === 'Box') {
     value = 'Circle';
     geometryFunction = new ol.interaction.Draw.createBox();
@@ -99,9 +99,10 @@ if (value== 'Point') {
       return geometry;
     };
   }
+  console.log(typeof(typeSelect.value))
   draw = new ol.interaction.Draw({
     features: features,
-    type: (typeSelect.value),
+    type: typeSelect.value,
     geometryFunction: geometryFunction
   });
   map.addInteraction(draw);
