@@ -10,13 +10,13 @@ var vector = new ol.layer.Vector({
       color: 'rgba(255, 255, 255, 0.2)',
     }),
     stroke: new ol.style.Stroke({
-      color: '#990033',
+      color: '#daa520',
       width: 2,
     }),
     image: new ol.style.Circle({
       radius: 7,
       fill: new ol.style.Fill({
-        color: '#990033',
+        color: '#daa520',
       }),
     }),
   }),
